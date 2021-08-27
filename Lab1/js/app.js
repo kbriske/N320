@@ -62,8 +62,8 @@ function setup() {
 }
 
 function draw() {
-    stroke("#b8ccf5");
-    background(218, 220, 224);
+    noStroke();
+    background(50, 54, 71);
 
     //INVOKE UPDATE
     droplets[0].update();
