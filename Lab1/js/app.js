@@ -27,12 +27,12 @@ class Droplet {
             console.log(count);
             this.y = 0;
 
-            if (count % 5 == 0) {
+            if (count % 10 == 0) {
                 console.log("its working");
-                b += 2.5;
+                b += 5;
                 if (b >= 200) {
-                    r += 5;
-                    g += 5;
+                    r += 10;
+                    g += 10;
                 }
             }
         }
