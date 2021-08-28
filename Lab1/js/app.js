@@ -1,9 +1,4 @@
-// let min = 20;
-// let max = 90;
-
-// function getRandomArbitrary(min, max) {
-//     return Math.random() * (max - min) + min;
-//   }
+let counter = 0;
 
 //CLASS FOR DROPLET
 class Droplet {
@@ -21,10 +16,15 @@ class Droplet {
         circle(this.x,this.y, this.radius);
         // console.log(this.speed);
     }
+
     reset() { //RESET FUNCTION
         if(this.y >= 400) {
             this.y = 0;
+            console.log(counter+=1);
         }
+        fill(0,0,50);
+        rect(0,370,800,30);
+        //OBVIOUS OBVIOUS OBVIOUS LOOK AT ME IM WHAT NEEDS ATTENTION
     }
     slowdown() { //SLOWDOWN FUNCTION
         if(this.speed >= 30) {
@@ -33,6 +33,20 @@ class Droplet {
         }
     }
 }
+
+// class Ground {
+//     constructor(rx,ry,rw,rh,color) {
+//         this.x = rx;
+//         this.y = ry;
+//         this.w = rw;
+//         this.h = rh;
+//         this.color = color;
+//     }
+//     update() {
+//         fill(this.color);
+//         rect(this.x,this.y, this.w, this.h);
+//     }
+// }
 
 
 let droplets = [];
@@ -51,11 +65,13 @@ droplets[10] = new Droplet(740,0,30,[10, 82, 250]);
 droplets[11] = new Droplet(519,0,20,[102, 148, 255]);
 droplets[12] = new Droplet(408,0,30,[10, 82, 250]);
 
-for(i=0; i < droplets.length; i++) {
-    console.log(i);
-}
+// for(i=0; i < droplets.length; i++) {
+//     console.log(i);
+// }
 
-console.log("length of array: " + droplets.length);
+// console.log("length of array: " + droplets.length);
+
+// let baseGround = new Ground(0,370,800,30,[98, 116, 166])
 
 function setup() {
     createCanvas(800,400);
@@ -109,4 +125,8 @@ function draw() {
     droplets[10].slowdown();
     droplets[11].slowdown();
     droplets[12].slowdown();
+
+    //INVOKE UPDATE FOR RECT
+    // baseGround.update();
+    
 }
