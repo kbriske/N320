@@ -4,6 +4,15 @@ let r = 10;
 let g = 10;
 let b = 70;
 
+class Ground {
+    constructor(gx, gy, width, height) {
+        this.x = gx;
+        this.y = gy;
+        this.w = width;
+        this.h = height;
+    }
+}
+
 //class for droplet
 class Droplet {
     constructor(dx, dy, radius, color) {
@@ -20,6 +29,7 @@ class Droplet {
         circle(circle(this.x, this.y, this.radius));
 
         fill(r, g, b);
+        // let ground1 = new Ground(0,370,800,30);
         rect(0, 370, 800, 30);
 
         if (this.y >= 400) {
@@ -29,7 +39,7 @@ class Droplet {
 
             if (count % 10 == 0) {
                 console.log("its working");
-                b += 5;
+                b += 7;
                 if (b >= 200) {
                     r += 10;
                     g += 10;
