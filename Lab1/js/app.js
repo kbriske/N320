@@ -11,6 +11,10 @@ class Ground {
         this.w = width;
         this.h = height;
     }
+    update() {
+        fill(r, g, b);
+        rect(0, 370, 800, 30);
+    }
 }
 
 //class for droplet
@@ -27,10 +31,6 @@ class Droplet {
         this.speed = this.speed + .1;
         fill(this.color);
         circle(circle(this.x, this.y, this.radius));
-
-        fill(r, g, b);
-        // let ground1 = new Ground(0,370,800,30);
-        rect(0, 370, 800, 30);
 
         if (this.y >= 400) {
             count = count += 1;
@@ -77,6 +77,9 @@ droplets[9] = new Droplet(619, 0, 20, [102, 148, 255]);
 droplets[10] = new Droplet(740, 0, 30, [10, 82, 250]);
 droplets[11] = new Droplet(519, 0, 20, [102, 148, 255]);
 droplets[12] = new Droplet(408, 0, 30, [10, 82, 250]);
+
+let ground = [];
+ground[0] = new Ground(0,370,800,30);
 
 function setup() {
     createCanvas(800, 400);
@@ -130,4 +133,6 @@ function draw() {
     droplets[10].resetColor();
     droplets[11].resetColor();
     droplets[12].resetColor();
+
+    ground[0].update();
 }
