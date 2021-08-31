@@ -34,11 +34,11 @@ class Droplet {
 
         if (this.y >= 400) {
             count = count += 1;
-            console.log(count);
+            // console.log(count);
             this.y = 0;
 
             if (count % 10 == 0) {
-                console.log("its working");
+                // console.log("its working");
                 b += 7;
                 if (b >= 200) {
                     r += 10;
@@ -89,50 +89,27 @@ function draw() {
     noStroke();
     background(50, 54, 71);
 
-    //INVOKE UPDATE FOR DROPLETS
-    droplets[0].update();
-    droplets[1].update();
-    droplets[2].update();
-    droplets[3].update();
-    droplets[4].update();
-    droplets[5].update();
-    droplets[6].update();
-    droplets[7].update();
-    droplets[8].update();
-    droplets[9].update();
-    droplets[10].update();
-    droplets[11].update();
-    droplets[12].update();
+//INVOKE UPDATE FOR DROPLETS
+    droplets.forEach((Droplet) => {
+        Droplet.update();
+   })
 
-    //INVOKE SLOWDOWN
-    droplets[0].slowdown();
-    droplets[1].slowdown();
-    droplets[2].slowdown();
-    droplets[3].slowdown();
-    droplets[4].slowdown();
-    droplets[5].slowdown();
-    droplets[6].slowdown();
-    droplets[7].slowdown();
-    droplets[8].slowdown();
-    droplets[9].slowdown();
-    droplets[10].slowdown();
-    droplets[11].slowdown();
-    droplets[12].slowdown();
+//INVOKE SLOWDOWN
+   droplets.forEach((Droplet) => {
+       Droplet.slowdown();
+   })
 
-    //INVOKE RESETCOLOR
-    droplets[0].resetColor();
-    droplets[1].resetColor();
-    droplets[2].resetColor();
-    droplets[3].resetColor();
-    droplets[4].resetColor();
-    droplets[5].resetColor();
-    droplets[6].resetColor();
-    droplets[7].resetColor();
-    droplets[8].resetColor();
-    droplets[9].resetColor();
-    droplets[10].resetColor();
-    droplets[11].resetColor();
-    droplets[12].resetColor();
+//INVOKE RESET COLOR   
+   droplets.forEach((Droplet) => {
+       Droplet.resetColor();
+   })
 
-    ground[0].update();
+//INVOKE GROUND UPDATE
+   ground.forEach((Ground) => {
+       Ground.update();
+   })
 }
+
+// myArray.forEach(obj) => {
+//     object.newThing (method)
+// })
