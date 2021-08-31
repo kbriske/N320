@@ -32,7 +32,7 @@ class Droplet {
         fill(this.color);
         circle(circle(this.x, this.y, this.radius));
 
-        if (this.y >= 400) {
+        if (this.y >= 370) {
             count = count += 1;
             // console.log(count);
             this.y = 0;
