@@ -62,6 +62,7 @@ class Droplet {
     }
 }
 
+//ARRAY FOR DROPLETS
 let droplets = [];
 droplets[0] = new Droplet(100, 40, 30, [10, 82, 250]);
 droplets[1] = new Droplet(300, 0, 30, [102, 148, 255]);
