@@ -55,3 +55,16 @@
 //     myCircles[1].update();
 // }
 
+function setup() {
+    createCanvas(400,400);
+
+}
+
+radius = 50;
+
+function draw() {
+    background(0,0,0);
+
+    fill(255,255,255);
+    circle(mouseX,mouseY,radius);
+}
