@@ -40,14 +40,22 @@ class String extends Instrument {
         this.play = "pluck";
     }
 }
-let wood1 = new Woodwind("quiet");
-wood1.test(); //invoke test from parent class
 
-let percussion1 = new Percussion("loud");
-percussion1.test(); //invoke test from parent class
+let playArray = [];
 
-let string1 = new String("soft");
-string1.test(); //invoke test from parent class
+playArray[0] = new Woodwind("quiet");
+// playArray[0].test(); //invoke test from parent class
+
+playArray[1] = new Percussion("loud");
+
+playArray[2] = new String("soft");
+
+//invoke test for instruments
+playArray.forEach((Instrument) => {
+    Instrument.test();
+})
 
 // let mayo = new Instrument("loud", "drums", "beats");
 // mayo.test();
+
+
