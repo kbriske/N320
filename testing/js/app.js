@@ -316,33 +316,52 @@ flag1.flutter;
 // console.log(b1.getAmount());
 
 
-class Game {
-    constructor(game) {
-        this.game = game;
-    }
-    test() {
-        console.log("the " + this.platform + " game has started up properly");
-    }
+// class Game {
+//     constructor(game) {
+//         this.game = game;
+//     }
+//     test() {
+//         console.log("the " + this.platform + " game has started up properly");
+//     }
+// }
+
+// class playstationGame extends Game {
+//     constructor(platform) {
+//         super(100);
+//         this.platform = "playstation";
+//     }
+// }
+
+// class pcGame extends Game{
+//     constructor(platform) {
+//         super(110);
+//         this.platform = "pc";
+//     }
+// }
+
+// let games = [];
+// games[0] = new playstationGame();
+// games[1] = new pcGame();
+
+// games.forEach((game) => {
+//     game.test();
+// })
+
+radius = 50;
+
+function setup() {
+    createCanvas(400,400);
+
 }
 
-class playstationGame extends Game {
-    constructor(platform) {
-        super(100);
-        this.platform = "playstation";
-    }
+function draw() {
+    background(0);
+
+    let newX = 400 - mouseX;
+    let newY = 400 - mouseY;
+
+    fill("#ffa930");
+    circle(newX,newY, radius);
+
 }
 
-class pcGame extends Game{
-    constructor(platform) {
-        super(110);
-        this.platform = "pc";
-    }
-}
-
-let games = [];
-games[0] = new playstationGame();
-games[1] = new pcGame();
-
-games.forEach((game) => {
-    game.test();
-})
