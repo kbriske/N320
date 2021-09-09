@@ -347,21 +347,22 @@ flag1.flutter;
 //     game.test();
 // })
 
-radius = 50;
+// radius = 50;
 
-function setup() {
-    createCanvas(400,400);
+// function setup() {
+//     createCanvas(400,400);
 
-}
+// }
 
-function draw() {
-    background(0);
+// function draw() {
+//     background(0);
 
-    let newX = 400 - mouseX;
-    let newY = 400 - mouseY;
+//     let newX = 400 - mouseX;
+//     let newY = 400 - mouseY;
 
-    fill("#ffa930");
-    circle(newX,newY, radius);
+//     fill("#ffa930");
+//     circle(newX,newY, radius);
 
-}
+// }
+
 
