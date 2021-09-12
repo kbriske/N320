@@ -364,5 +364,3 @@ flag1.flutter;
 //     circle(newX,newY, radius);
 
 // }
-
-
