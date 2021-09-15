@@ -364,3 +364,39 @@ flag1.flutter;
 //     circle(newX,newY, radius);
 
 // }
+
+
+
+
+
+//CSS ANIMATIONS
+let txtStatInput = document.getElementById("txtStatInput");
+
+function textFocus() {
+    requestAnimationFrame(txtStatInput);
+    txtStatInput.classList.remove("deselected");
+    txtStatInput.classList.add("selected");
+}
+
+function textLeave() {
+    resetAnimation(txtStatInput);
+    txtStatInput.classList.remove("selected");
+    txtStatInput.classList.add("deselected");
+}
+
+function resetAnimation(el) {
+    el.style.animation = 'none';
+    el.offsetHeight;
+    el.style.animation = null;
+}
+
+
+var navItems = document.getElementsByClassName("navitem");
+init();
+function init() {
+	for(let i = 0; i < navItems.length; i++) {
+		TweenMax.from(navItems[i], 
+			{ duration: .7, delay: i, alpha: 0, x: -10 } 
+		);
+	}
+}
