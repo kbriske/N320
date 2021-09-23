@@ -373,7 +373,7 @@ flag1.flutter;
 let txtStatInput = document.getElementById("txtStatInput");
 
 function textFocus() {
-    requestAnimationFrame(txtStatInput);
+    resetAnimation(txtStatInput);
     txtStatInput.classList.remove("deselected");
     txtStatInput.classList.add("selected");
 }
@@ -395,8 +395,9 @@ var navItems = document.getElementsByClassName("navitem");
 init();
 function init() {
 	for(let i = 0; i < navItems.length; i++) {
-		TweenMax.from(navItems[i], 
-			{ duration: .7, delay: i, alpha: 0, x: -10 } 
+		TweenMax.from(navItems[i], /* trigger reflow */
+			{ duration: .4, delay: i, alpha: 0, x: 10} 
+            // { duration: (i+1) * .4, x: -10, alpha: 0}
 		);
 	}
 }

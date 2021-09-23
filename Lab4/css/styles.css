@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#title {
+    font-size: 45px;
+    font-style: normal;
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+#header {
+    height: 150px;
+    background-color: navy;
+}
+
+#items {
+    height: 450px;
+    /* background-color: bisque; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.content {
+    width: 26%;
+    height: 150px;
+    background-color: purple;
+}

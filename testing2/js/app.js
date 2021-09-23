@@ -1,69 +1,72 @@
-// var navItems = document.getElementsByClassName("navitem");
-// init();
-
-// function init() {
-// 	for(let i = 0; i < navItems.length; i++) {
-// 		TweenMax.from(navItems[i], 
-// 			{ duration: .7, delay: i, alpha: 0, x: -10 } 
-// 		);
-// 	}
-// }
-
-let area = document.getElementById('washMachine');
+// let area = document.getElementById('washMachine');
 // let doorArea = document.getElementById('washDoor');
 
-class washMachine {
-    //class properties
-    baseColor = "#3464eb";
-	baseWidth = 150;
-	baseHeight = 170;
-	baseX = 100;
-	baseY = 200;
+// class washMachine {
+//     //class properties
+//     baseColor = "#3464eb";
+//     baseWidth = 50;
+//     baseHeight = 70;
+//     baseX = 100;
+//     baseY = 200;
 
-    doorX = 200
-    doorY = 200
-	doorRadius = 90
-    doorColor = "#eb348f";
+//     doorX = 200
+//     doorY = 200
+//     doorRadius = 60
+//     doorColor = "#eb348f";
 
-	dialX = 200
-	dialY = 200
-	dialRadius = 40
-	dialColor = "#f5ad42";
+//     dialX = 200
+//     dialY = 200
+//     dialRadius = 20
+//     dialColor = "#f5ad42";
 
-    draw() {
-       let newBase = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-       newBase.setAttribute("fill", this.baseColor)
+//     draw() {
+//         let newBase = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+//         newBase.setAttribute("fill", this.baseColor)
 
-    //    newBase.setAttribute("x", Math.random() * 300);
-    //    newBase.setAttribute("y", Math.random() * 300);
-       
-    //make the body of the washer
-       newBase.setAttribute("width", 250 + Math.random() * 250);
-       newBase.setAttribute("height", 250 + Math.random() * 250);
+//         //make the body of the washer
+//         newBase.setAttribute("width", 150);
+//         newBase.setAttribute("height", 250);
 
-//new Door
-       let newCirc = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-       newCirc.setAttribute("fill", this.doorColor)
-       
-       //make the door
-        newCirc.setAttribute("cx", 100 + Math.random() * 150);
-        newCirc.setAttribute("cy", 100 + Math.random() * 150);
-        newCirc.setAttribute("r", this.doorRadius);
+//         //new door
+//         let newCirc = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+//         newCirc.setAttribute("fill", this.doorColor)
+//         newCirc.setAttribute("cx", 50 + Math.random() * 50);
+//         newCirc.setAttribute("cy", 80 + Math.random() * 100);
+//         newCirc.setAttribute("r", this.doorRadius);
 
-//new Door
-let newCirc2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-newCirc2.setAttribute("fill", this.doorColor);
+//         //new dial
+//         let newCirc2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+//         newCirc2.setAttribute("fill", this.dialColor);
+//         newCirc2.setAttribute("cx", 30 + Math.random() * 100);
+//         newCirc2.setAttribute("cy", 40 + Math.random() * 20);
+//         newCirc2.setAttribute("r", this.dialRadius);
 
-//make the door
- newCirc2.setAttribute("cx", 100 + Math.random() * 150);
- newCirc2.setAttribute("cy", 100 + Math.random() * 150);
- newCirc2.setAttribute("r", this.doorRadius);
- 
-    area.appendChild(newBase);
-    area.appendChild(newCirc);
-    area.appendChild(newCirc2);
-    }
-}
+//         //append them kids
+//         area.appendChild(newBase);
+//         area.appendChild(newCirc);
+//         area.appendChild(newCirc2);
+//     }
+// }
 
-let newWash = new washMachine;
-newWash.draw();
+// class Manager {
+
+//     draw() {
+//         for(let i = 0; i < 10; i++) {
+//             washerCount = [];
+//             this.washerCount = new washMachine;
+
+//             let newCirc = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+//             newCirc.setAttribute("fill", this.doorColor)
+//             newCirc.setAttribute("cx", 50 + Math.random() * 50 + i);
+//             newCirc.setAttribute("cy", 80 + Math.random() * 100 + i);
+//             newCirc.setAttribute("r", this.doorRadius);
+
+
+//         }
+//     }
+// }
+
+// //new instance of the washMachine object
+// let newWash = new washMachine;
+// newWash.draw();
+
