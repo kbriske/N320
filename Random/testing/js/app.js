@@ -369,35 +369,60 @@ flag1.flutter;
 
 
 
-//CSS ANIMATIONS
-let txtStatInput = document.getElementById("txtStatInput");
+// //CSS ANIMATIONS
+// let txtStatInput = document.getElementById("txtStatInput");
 
-function textFocus() {
-    resetAnimation(txtStatInput);
-    txtStatInput.classList.remove("deselected");
-    txtStatInput.classList.add("selected");
-}
+// function textFocus() {
+//     resetAnimation(txtStatInput);
+//     txtStatInput.classList.remove("deselected");
+//     txtStatInput.classList.add("selected");
+// }
 
-function textLeave() {
-    resetAnimation(txtStatInput);
-    txtStatInput.classList.remove("selected");
-    txtStatInput.classList.add("deselected");
-}
+// function textLeave() {
+//     resetAnimation(txtStatInput);
+//     txtStatInput.classList.remove("selected");
+//     txtStatInput.classList.add("deselected");
+// }
 
-function resetAnimation(el) {
-    el.style.animation = 'none';
-    el.offsetHeight;
-    el.style.animation = null;
-}
+// function resetAnimation(el) {
+//     el.style.animation = 'none';
+//     el.offsetHeight;
+//     el.style.animation = null;
+// }
 
 
-var navItems = document.getElementsByClassName("navitem");
-init();
-function init() {
-	for(let i = 0; i < navItems.length; i++) {
-		TweenMax.from(navItems[i], /* trigger reflow */
-			{ duration: .4, delay: i, alpha: 0, x: 10} 
-            // { duration: (i+1) * .4, x: -10, alpha: 0}
-		);
-	}
-}
+// var navItems = document.getElementsByClassName("navitem");
+// init();
+// function init() {
+// 	for(let i = 0; i < navItems.length; i++) {
+// 		TweenMax.from(navItems[i], /* trigger reflow */
+// 			{ duration: .4, delay: i, alpha: 0, x: 10} 
+//             // { duration: (i+1) * .4, x: -10, alpha: 0}
+// 		);
+// 	}
+// }
+
+// function setup() {
+//     let thisarr = [];
+//     let newarr = [];
+
+//     for(var i = 0; i < 100; i++) {
+//         thisarr.push(i);
+//         thisarr[i] = i;
+//     }
+
+//     for(i = thisarr.length-1; i > 50; i--) {
+//         if(thisarr[i] > 50) {
+//             newarr = thisarr.splice(i,1);
+//         }
+//     }
+//     console.log(thisarr);
+// }
+
+// let elements = [1, 3, 8, 5, 16, 1, 4];
+// for (i = elements.length - 1; i >= 0; --i) {
+//   if (elements[i] % 2 === 0) {
+//     elements.splice(i, 1); // Remove even numbers
+//   }
+// }
+// console.log(elements);
