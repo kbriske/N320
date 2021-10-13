@@ -1,4 +1,4 @@
-#boardContainer {
+#board {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -8,6 +8,7 @@
     background-color: bisque;
 }
 
-.tile {    
+#tile {    
     margin: 10px;
 }
+
