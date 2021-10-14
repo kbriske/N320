@@ -1,59 +1,74 @@
 //REFERENCES
-let board = document.getElementById("board");
+// let board = document.getElementById("board");
 
+let compareArr = []; //an empty array to hold the properties of clicked elements
 
 class Board {
     element = document.getElementById("board");
     tileArray = [];
 
-    boardSetup() {
-        for(let i = 0; i < 10; i++) {
+    boardSetup() { //generates tiles to the board
+        for (let i = 0; i < 4; i++) {
             this.tileArray[i] = new Tile;
-            this.tileArray[i].draw();
+            this.tileArray[i].draw(i * 100);
         }
+        console.log(this.tileArray);
     }
 }
-
 
 class Tile {
-    x = 20;
-    y = 20;
-    width = 50;
-    height = 50;
-    color = "#3eb0bd"
+    x = 12;
+    y = 12;
+    width = 70;
+    height = 70;
+    color = "#3eb0bd";
     clicks = 0;
 
-    draw() {
+    draw(z) {
         //create a tile
         let newTile = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        
-        //push the tile into an array
-        // tileArray.push(newTile);
-        // console.log(tireArray);
-    
-    for(let i = 0; i < 10; i++) {
-        newTile.setAttribute("x", this.x * i + 10);
-        newTile.setAttribute("y", this.y);
-        newTile.setAttribute("width", this.width);
-        newTile.setAttribute("height", this.height);
-        newTile.setAttribute("fill", this.color);
-}
- 
-            
-        // newTile.addEventListener("click", (event) => {
-        //     if(event.target == this.searchColor) { //this should be when equal to the index of another square
-        //         event.target.remove();
+        let totalClicks = 0;
+        let dataArr = ["1", "1", "2", "2"]
 
-        //         //store how many have been clicked
-        //         this.clicks++;
-        //     }
-            board.appendChild(newTile);
-        // })
+        for (let i = 0; i < 3; i++) {
+            newTile.setAttribute("x", this.x + z); //set the tile x position to the intital x + increment on z
+            newTile.setAttribute("y", this.y); //set the tile y position 
+            newTile.setAttribute("width", this.width); //set width
+            newTile.setAttribute("height", this.height); //set height
+            newTile.setAttribute("fill", this.color); //set color
+            newTile.addEventListener("click", handleClick); //set eventListener for click
+            newTile.setAttribute("data-index", z/100 + 1); //set an event listener iterating by one for every tile
+        }
+
+        //function to handle a click event
+        function handleClick(event) {
+
+            totalClicks ++;
+
+            let player1 = new Player();
+  
+            compareArr.push(event.target.getAttribute("data-index"));
+            console.log(compareArr);
+            
+            if(compareArr[0] == 1 && compareArr[1] == 2 || compareArr[0] == 2 && compareArr[1] == 1) {
+                console.log("MATCH");
+                compareArr = [];
+                newTile.setAttribute("fill", "#7080fa");
+            }
+        }
+        board.appendChild(newTile); //append the new tile to the screen board
     }
 }
 
-// let tile1 = new Tile();
-// tile1.makeTiles();
+class Player {
+    choices = [];
+    score = 0;
+
+    getChoice(c1, c2) {
+        this.choices.push(c1, c2);
+        console.log(this.choice1);
+    }
+}
 
 let board1 = new Board();
 board1.boardSetup();
@@ -62,68 +77,50 @@ board1.boardSetup();
 
 
 
+        // } else if (totalClicks > 2) {
+        //     totalClicks = 0;
+        //     console.log("NO MORE");
+        // }
 
 
 
 
+            // if(totalClicks < 2) {
+            //     compareArr.push(event.target.getAttribute("data-index"));
+            //     console.log(compareArr);
+            //     // player1.getChoice(event.target.getAttribute("data-index"));
+            //     // console.log(player1);
+            // }
+            // else {
+            //     console.log("NO MORE");
+            //     compareArr.pop();
+            // }
+
+            
+            // if(totalClicks > 1) {
+            //     player1.getChoice2(event.target.getAttribute("data-index"));
+            // }
+    
+
+            // compareArr.push(event.target); //add a clicked element to the array
+            // console.log(compareArr);
+
+            // if(compareArr[0].getAttribute("data-index") == 1) {
+            //     console.log("1st click captured, its index is: " + compareArr[0].getAttribute("data-index"));
+            // }
 
 
+// function checkMatch(x) {
+//                 if(compareArr[0].getAttribute("data-index") == 1 && compareArr[1].getAttribute("data-index") == 3) {
+//                     console.log("MATCH MATCH");
+//                 }
 
+//             }
+            // if(totalClicks > 1) { //how can I use this to compare values instead
+            //     totalClicks = 0;
+            //     console.log("RESET, totalClicks = " + totalClicks);
+            // }
 
-
-
-
-
-// //REFERENCES
-// let startScreen = document.getElementsByClassName("startScreen");
-// let tiles = document.getElementsByClassName("tile");
-
-// //variables
-// let choice1 = [];
-// let choice2 = [];
-
-
-
-// class Tile {
-//     x = 40;
-//     y = 40;
-//     width = 80;
-//     height = 80;
-//     color = "#3eb0bd";
-
-//     draw() {
-//         let newTile = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-//         // newTile.classList.add("gameCirc");
-//         newTile.setAttribute("x", 40);
-//         newTile.setAttribute("y", 40);
-//         newTile.setAttribute("width", 400);
-//         newTile.setAttribute("height", 400);
-
-//         this.boardContainer.appendChild(newTile);
-//     }
-// }
-
-// class Player {
-//     score = 0;
-// }
-
-// function match() {
-//     let sample1 = event.target.getAttribute("data-id"); //get the data associated with each tile
-//     choice1.push(sample1); //add the sample that you clicked to an array
-//     console.log(choice1); //log that choice to the console
-
-//     x = setTimeout(timeCheck, 2000);
-// }
-
-// function timeCheck() { //change this to a match function
-//     timeUp = true;
-//     console.log("time is up: " + timeUp);
-//     // alert('Time is up');
-// }
-
-// // let newTile = new Tile();
-// // console.log(newTile.positions[0][0]);
-// // console.log(newTile.arr[0]);
-
-// let tile1 = new Tile();
-// tile1.draw();
+            // console.log("data-index: " + newTile.getAttribute("data-index"));
+            // console.log("total clicks: " + totalClicks)
+            // newTile.getAttribute("data-index");
