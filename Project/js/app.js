@@ -69,7 +69,6 @@ class Game {
                     tiles[i].style.fill = "#000000";
                 }
             }, 500);
-
         }
     }
 }
