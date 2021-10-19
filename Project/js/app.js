@@ -1,126 +1,126 @@
-//REFERENCES
-// let board = document.getElementById("board");
+class Game {
+    board = new Board();
+    pair = []; //array to hold clicked elements
+    matches = 0;
 
-let compareArr = []; //an empty array to hold the properties of clicked elements
+    playagain = document.getElementById("btn").addEventListener("click", () => {
+        location.reload();
+    })
+
+    start() {
+        this.board.boardSetup();
+        let tileArrayLocal = this.board.tileArray; //pulls in array for tiles
+        // console.log(tileArrayLocal)
+        console.log(tileArrayLocal);
+        for (let i = 0; i < tileArrayLocal.length; i++) {
+            tileArrayLocal[i].newTile.addEventListener("click", this.click.bind(this)); //set eventListener for click
+        }
+    }
+
+    checkWin() {
+        if(this.matches === 4) {
+            console.log(this.matches);
+            document.getElementById("win").style.display = "flex";
+        }
+    }
+    click() { //runs whenever a user clicks
+        let tiles = document.querySelectorAll("rect");
+        // console.log(tiles);
+        let color = event.target.dataset.color;
+        let id = event.target.dataset.id;
+        // console.log(tiles, colors);
+
+        //change the color of the tile (clicked)
+        // for (let i = 0; i < tiles.length; i++) {
+            event.target.style.fill = color;
+        // }
+
+        this.pair.push(event.target); //adds clicked tile to array
+        // for(let i = 0; i < this.pair.length; i++) {
+        //     this.pair[i].setAttribute("data-null", "null");
+        // }
+      
+        console.log(this.pair);
+
+        //if the array has a length of two check for a match
+        if (this.pair.length == 2) {
+            this.checkMatch(this.pair);
+            this.pair = [];
+        }
+        // console.log(id + " flipped");
+    }
+
+    checkMatch(tiles) {
+    if (tiles[0].dataset.color === tiles[1].dataset.color) {
+            console.log("MATCH");
+            for (let i = 0; i < 2; i++) {
+                console.log(tiles[i]);
+                // tiles[i].remove();
+                tiles[i].classList.add("tileMatch");
+            }
+            this.matches++;
+            this.checkWin();
+            console.log(this.matches);
+        }
+        else {
+            console.log("NOT A MATCH");
+            setTimeout(() => {
+                for (let i = 0; i < 2; i++) {
+                    tiles[i].style.fill = "#000000";
+                }
+            }, 500);
+
+        }
+    }
+}
 
 class Board {
     element = document.getElementById("board");
     tileArray = [];
+    colors = ["#ff575f", "#ff575f", "#03fc88", "#03fc88", "#177efc", "#177efc", "#ffe733", "#ffe733"];
+    colorsShuffled = this.colors.sort((a, b) => 0.5 - Math.random());
 
     boardSetup() { //generates tiles to the board
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 8; i++) {
             this.tileArray[i] = new Tile;
-            this.tileArray[i].draw(i * 100);
+            
+            if (i < 4) {
+                this.tileArray[i].draw((i + 1), 40, i, this.colorsShuffled[i]);
+
+            }
+            else {
+                this.tileArray[i].draw((i - 3), 320, i, this.colorsShuffled[i]);
+            }
         }
-        console.log(this.tileArray);
+        // console.log(this.tileArray);
     }
 }
 
 class Tile {
-    x = 12;
-    y = 12;
-    width = 70;
-    height = 70;
-    color = "#3eb0bd";
-    clicks = 0;
+    x = 40;
+    y = 40;
+    width = 150;
+    height = 240;
+    color = "#000000";
+    newTile = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 
-    draw(z) {
-        //create a tile
-        let newTile = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        let totalClicks = 0;
-        let dataArr = ["1", "1", "2", "2"]
+    draw(xInd, yInd, id, newColor) {
 
-        for (let i = 0; i < 3; i++) {
-            newTile.setAttribute("x", this.x + z); //set the tile x position to the intital x + increment on z
-            newTile.setAttribute("y", this.y); //set the tile y position 
-            newTile.setAttribute("width", this.width); //set width
-            newTile.setAttribute("height", this.height); //set height
-            newTile.setAttribute("fill", this.color); //set color
-            newTile.addEventListener("click", handleClick); //set eventListener for click
-            newTile.setAttribute("data-index", z/100 + 1); //set an event listener iterating by one for every tile
-        }
+        this.x = this.x * xInd + (150 * (xInd - 1));
+        this.y = yInd;
 
-        //function to handle a click event
-        function handleClick(event) {
+        this.newTile.setAttribute("x", this.x); //set the tile x position to the intital x + increment on z
+        this.newTile.setAttribute("y", this.y); //set the tile y position 
+        this.newTile.setAttribute("width", this.width); //set width
+        this.newTile.setAttribute("height", this.height); //set height
+        this.newTile.setAttribute("fill", this.color); //set color
+        this.newTile.setAttribute("data-color", newColor);
+        this.newTile.setAttribute("data-id", id);
+        // this.newTile.setAttribute("data-null", "");
 
-            totalClicks ++;
-
-            let player1 = new Player();
-  
-            compareArr.push(event.target.getAttribute("data-index"));
-            console.log(compareArr);
-            
-            if(compareArr[0] == 1 && compareArr[1] == 2 || compareArr[0] == 2 && compareArr[1] == 1) {
-                console.log("MATCH");
-                compareArr = [];
-                newTile.setAttribute("fill", "#7080fa");
-            }
-        }
-        board.appendChild(newTile); //append the new tile to the screen board
+        board.appendChild(this.newTile); //append the new tile to the screen board
     }
 }
 
-class Player {
-    choices = [];
-    score = 0;
-
-    getChoice(c1, c2) {
-        this.choices.push(c1, c2);
-        console.log(this.choice1);
-    }
-}
-
-let board1 = new Board();
-board1.boardSetup();
-
-
-
-
-
-        // } else if (totalClicks > 2) {
-        //     totalClicks = 0;
-        //     console.log("NO MORE");
-        // }
-
-
-
-
-            // if(totalClicks < 2) {
-            //     compareArr.push(event.target.getAttribute("data-index"));
-            //     console.log(compareArr);
-            //     // player1.getChoice(event.target.getAttribute("data-index"));
-            //     // console.log(player1);
-            // }
-            // else {
-            //     console.log("NO MORE");
-            //     compareArr.pop();
-            // }
-
-            
-            // if(totalClicks > 1) {
-            //     player1.getChoice2(event.target.getAttribute("data-index"));
-            // }
-    
-
-            // compareArr.push(event.target); //add a clicked element to the array
-            // console.log(compareArr);
-
-            // if(compareArr[0].getAttribute("data-index") == 1) {
-            //     console.log("1st click captured, its index is: " + compareArr[0].getAttribute("data-index"));
-            // }
-
-
-// function checkMatch(x) {
-//                 if(compareArr[0].getAttribute("data-index") == 1 && compareArr[1].getAttribute("data-index") == 3) {
-//                     console.log("MATCH MATCH");
-//                 }
-
-//             }
-            // if(totalClicks > 1) { //how can I use this to compare values instead
-            //     totalClicks = 0;
-            //     console.log("RESET, totalClicks = " + totalClicks);
-            // }
-
-            // console.log("data-index: " + newTile.getAttribute("data-index"));
-            // console.log("total clicks: " + totalClicks)
-            // newTile.getAttribute("data-index");
+let game = new Game();
+game.start();
